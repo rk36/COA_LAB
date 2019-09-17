@@ -1,0 +1,138 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+;start address
+;lxi h,0013h
+;mov b,m
+;inx h
+;mov c,m
+
+
+
+;; when debug use F6 to excute lines which are crossed (X) by clicking on the 
+;instructions.
+;key stored in d
+mvi d,3
+
+;;end address
+;lxi h,0015h
+;mov h,m
+;inx h
+;mov l,m
+
+;call half
+
+main: call check
+;LXI H, 0FFFh
+;PUSH H
+;POP PSW 
+call half
+mov a,d
+cmp m
+cz equal
+cc keysmall
+cnc keybig
+jmp main
+hlt
+
+
+half: lda 0015h
+mov b,a
+lda 0016h
+mov c,a
+lda 0013h
+mov h,a
+lda 0014h
+mov l,a
+dad b
+mov a,h
+rar
+mov h,a
+mov a,l
+rar
+mov l,a
+ret
+
+
+equal: mvi a,01
+sta 0017h
+;shld 99
+mvi a,00
+sta 0013h
+mvi a,1Bh
+sta 0014h
+mvi a,00h
+sta 0015h
+mvi a,1dh
+sta 0016h
+hlt
+
+keybig: inx h ;;;;; not inx m 
+mov a,h 
+sta 0013h
+mov a,l
+sta 0014h
+rnc
+
+
+
+keysmall: dcx h ;;; not dcx m
+mov a,h
+sta 0015h
+mov a,l
+sta 0016h
+rc
+
+
+check: lxi h,0013h
+mov b,m
+lda 0015h
+mov b,a
+cmp b
+cc error
+;rnc
+;mov l,16
+;mov c,14
+inx h
+mov c,m
+lda 0016h
+cmp c
+cc error
+ret
+
+error: mvi a,00
+sta 0017h
+mvi a,00
+sta 0013h
+mvi a,1Bh
+sta 0014h
+mvi a,00h
+sta 0015h
+mvi a,1dh
+sta 0016h
+
+hlt
+
+
+
+
+; dad B add 16 bit number HL and BC and stores in HL
+; RAR B right shift
+; cmp B means [B} - [A]
+
+;if (A) < (reg/mem): carry flag is set
+;if (A) = (reg/mem): zero flag is set
+;if (A) > (reg/mem): carry and zero flags are reset
+
+;Example: CMP B or CMP M
+
+; use lda for transfer of data from memory to accumulater than transfer to
+; any desired location
+ 

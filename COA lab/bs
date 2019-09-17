@@ -1,0 +1,40 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+;start address
+mvi b,
+mvi c,
+
+;key stored in d
+mvi d,
+
+;end address
+mvi h,
+mvi l,
+
+call label2
+label3: cmp m
+jz label4
+
+
+hlt
+
+
+label2: dad b
+mov a,h
+rar
+mov h,a
+mov a,l
+rar
+mov l,a
+ret
+
+; dad B add 16 bit number HL and BC and stores in HL
+; RAR B right shift 

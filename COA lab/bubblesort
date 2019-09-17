@@ -1,0 +1,40 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+MVI H,00H
+MVI L,0D1H
+
+
+MVI B,06H
+label1: MOV D,B
+PUSH H
+label2: MOV A,M
+INX H
+CMP M
+PUSH H
+cnc LABEL3
+POP H
+DCR D
+MOV A,D
+jnz label2
+POP H
+DCR B
+MOV A,B
+JNZ label1
+hlt
+
+LABEL3: MOV E,A
+MOV A,M
+MOV M,E
+DCX H
+MOV M,A
+ret
+
+

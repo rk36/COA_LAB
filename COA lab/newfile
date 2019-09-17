@@ -1,0 +1,49 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+;lda 00BDH
+;mov b,a
+;lda 00BCH
+;sub b
+;sta 00BEH
+mvi a,01h
+mov b,a
+mvi a,09h
+mov c,a
+;swap elements
+
+;mov a,b
+;mov b,c
+;mov c,a
+
+; subtract element
+
+sub b ;a = a-b
+sbi 02h ;a = a - immediate value
+adi 03h ;a = a + immediate value
+; carry bit for showing if addition/sub exceeds
+; auxilary bit for showing if addition/sub for first four bit is exceeding
+; if accumulater has zero value
+; value at accumulater has even no. of ones
+; LDAX B load the data denoted by register pair B and C
+; LDAX D load the data denoted by register pair D and E
+; MOV A,M load the data denoted by [[h][l]]
+; STAX B load from accumulater to address denoted by register pair B and C
+; MVI moves the immediate value, it could be seen in the address given by the PC
+; and its next position 
+; stack input takes 16 bit data or two consective data location;
+; stack starts from the bottom
+; POP B  stores the content of stack top to BC
+
+; SPHL move the address pointed by SP as content of HL
+
+
+hlt

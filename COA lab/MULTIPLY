@@ -1,0 +1,27 @@
+
+;<multiplication>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+LXI H,00C9H
+MVI B,0FH
+MVI C,08H
+MVI A,00H
+MVI D,00H
+MOV A,C
+JZ LABEL2
+LABEL1: MOV A,D
+ADD B
+DCR C
+MOV D,A
+MOV A,C
+JNZ LABEL1
+
+LABEL2: MOV M,D
+
+hlt

@@ -1,0 +1,34 @@
+
+;<block transfer>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+mvi H,02h
+mvi l,0bh
+; loaded val of count from HL memory
+mov c,m
+
+inx h
+;increment to go to data segment 
+mvi d,02h
+mvi e,13h
+; copy dest. of data segment
+
+label1: mov a,m
+stax d
+inx h
+inx d
+dcr c
+mov a,c
+jnz label1
+
+hlt
+
+; stax b/d mov accumulater value pointed by BC/DE
+; ldax B/D load val in accum from address pointed by BC/DE

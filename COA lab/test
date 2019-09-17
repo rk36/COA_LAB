@@ -1,0 +1,102 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+;start address
+mvi b,00h
+mvi c,0dh
+
+;key stored in d
+mvi d,
+
+;end address
+mvi h,00h
+mvi l,0
+
+
+label3: call check 
+call label2
+mov a,d
+cmp m
+jz label4
+jc label5
+jnc label6
+
+hlt
+
+
+label2: lxi h,000dh
+lxi b,000fh
+dad b
+mov a,h
+rar
+mov h,a
+mov a,l
+rar
+mov l,a
+ret
+
+
+label4: lxi h,0012h
+mvi a,01
+stax h
+shld 99
+hlt
+
+label5: inx m
+mov a,h
+sta 13
+mov a,b
+sta 14
+ret
+
+
+
+label6: dcx m
+mov b,h
+mov c,l
+mov a,b
+sta 15
+mov a,c
+sta 16
+ret
+
+
+check: mov h,15
+mov b,13
+mov a,b
+cmp h
+cc error
+rnc
+mov l,16
+mov c,14
+mov a,c
+cmp l
+cc error
+rnc
+
+error: lxi 18
+mvi a,00
+stax h 
+shld 99
+hlt
+
+
+
+
+; dad B add 16 bit number HL and BC and stores in HL
+; RAR B right shift
+;if (A) < (reg/mem): carry flag is set
+;if (A) = (reg/mem): zero flag is set
+;if (A) > (reg/mem): carry and zero flags are reset
+
+;Example: CMP B or CMP M
+
+
+ 

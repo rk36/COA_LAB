@@ -1,0 +1,24 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+LXI H, 000dh
+PUSH H
+POP PSW 
+
+LXI H, 000eh
+PUSH H
+POP PSW 
+
+LXI H, 000fh
+PUSH H
+POP PSW 
+
+
+hlt

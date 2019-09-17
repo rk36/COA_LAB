@@ -1,0 +1,14 @@
+
+;<subtract two numbers>
+
+jmp start
+
+;data
+mvi a,02h
+mov b,a
+
+;code
+start: nop
+
+
+hlt

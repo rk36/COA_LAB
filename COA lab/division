@@ -1,0 +1,13 @@
+
+;<division>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+
+hlt
