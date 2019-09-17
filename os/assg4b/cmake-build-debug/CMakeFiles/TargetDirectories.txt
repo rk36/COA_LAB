@@ -1,0 +1,3 @@
+/home/rishabh/CLionProjects/os/assg4b/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/rishabh/CLionProjects/os/assg4b/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/rishabh/CLionProjects/os/assg4b/cmake-build-debug/CMakeFiles/assg4b.dir

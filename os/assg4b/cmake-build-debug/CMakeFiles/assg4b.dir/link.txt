@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/assg4b.dir/main.cpp.o  -o assg4b 
