@@ -1,0 +1,106 @@
+how to compile a thread file
+
+gcc filename.c -lpthread
+
+
+
+
+including libraries
+
+#include <stdio.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+#include <stdio.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <pthread.h>
+#include <signal.h>
+
+
+to get the current thread id , enter 
+
+	printf("hi -%ld, -%d\n",pthread_self(),x);
+
+
+
+how to work with signals
+
+void signalwork(int signo)
+{
+	if (signo == SIGALRM)
+		{ 
+			printf("alarm goes off\n");
+	 	}
+
+	else if(signo == SIGINT)
+	{
+		printf("\nclose the program\n");
+		exit(0);
+	}
+
+    // ctrl+ c
+
+	else if(signo == SIGTSTP)
+	{
+		printf("\n signal to kill\n");
+		exit(0);
+	}
+
+    // ctrl + z
+}
+
+
+in the main program 
+
+
+	if (signal(SIGALRM , alarm_handler) == SIG_ERR) // function name 
+
+	{ 	
+		printf (" failed to register alarm handler .") ;
+		exit (1);
+	}
+
+how to get random numbers 
+
+int pos = rand()%finish_line;
+
+  0 <= pos <= finish_line
+
+
+to clear the screen 
+
+system("clear");
+
+
+for getting error
+
+	if(pipe(fd)<0)
+	{
+		perror("pipe");
+	}
+
+for getting fork     
+
+if(pid < 0)
+	{
+		perror("fork");
+	}
+
+
+int arr[] = {1,-12,-13,3,0,2,-3,-17,98,43};
+
+the array of integers , so that we can get values 
+
+for thread id,
+pthread_self
+for comparing thread id 
+pthread_equal
+
+to check for the power of 2
+
+return !(index & (index - 1));
